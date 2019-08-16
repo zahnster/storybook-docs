@@ -2,13 +2,13 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 
 import Button from './';
-import mdx from './docs.mdx';
+import mdx from './docs.stories.mdx';
 
 export default {
   title: 'Components|Button',
   component: Button,
   parameters: {
-    docs: mdx
+    docs: mdx.parameters.docs
   }
 };
 
