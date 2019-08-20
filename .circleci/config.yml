@@ -10,7 +10,7 @@ jobs:
     steps:
       - checkout
 
-  npmInstall:
+  build:
     docker:
       - image: circleci/node:8.15-browsers
 
@@ -30,13 +30,6 @@ jobs:
             - node_modules
           key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
 
-  buildStorybook:
-    docker:
-      - image: circleci/node:8.15-browsers
-
-    working_directory: ~/repo
-
-    steps:
       - run:
           name: Build Storybook
           command: 'npm run build-storybook'
@@ -52,5 +45,4 @@ workflows:
   vrt:
     jobs:
       - checkout
-      - npmInstall
-      - buildStorybook
+      - build
