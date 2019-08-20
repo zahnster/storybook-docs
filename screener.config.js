@@ -6,6 +6,8 @@ module.exports = {
   projectRepo: 'zahnster/storybook-docs',
   storybookConfigDir: '.storybook',
   apiKey: process.env.SCREENER_KEY,
-  resolution: '1024x768'
+  resolution: '1024x768',
+  baseBranch: 'master',
+  failureExitCode: 0
   // storybookStaticBuildDir: '.storybook-static'
 };
