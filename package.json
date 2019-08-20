@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o .storybook-static",
+    "test-storybook": "screener-storybook --conf screener.config.js"
   },
   "keywords": [],
   "author": "",
@@ -22,5 +23,9 @@
     "babel-loader": "^8.0.6",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.1.0",
+    "screener-storybook": "^0.18.7"
   }
 }
