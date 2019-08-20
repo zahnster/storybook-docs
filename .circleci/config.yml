@@ -30,6 +30,10 @@ jobs:
           name: Build Storybook
           command: 'npm run build-storybook'
 
+      - run:
+          name: Screener VRT
+          command: 'npm run test-storybook'
+
 workflows:
   version: 2
 

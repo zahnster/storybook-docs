@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o .storybook-static",
-    "test-storybook": "screener-storybook --conf screener.config.js"
+    "test-storybook-dev": "screener-storybook --conf screener.config.js",
+    "test-storybook": "NODE_ENV=production screener-storybook --conf screener.config.js"
   },
   "keywords": [],
   "author": "",
