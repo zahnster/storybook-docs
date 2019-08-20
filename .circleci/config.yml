@@ -1,15 +1,18 @@
 version: 2.1
 
 jobs:
-  build:
+  checkout:
     docker:
       - image: circleci/node:8.15-browsers
-
-    working_directory: ~/repo
 
     steps:
       - checkout
 
+  npmInstall:
+    docker:
+      - image: circleci/node:8.15-browsers
+
+    steps:
       # Download and cache dependencies
       - restore_cache:
           key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
@@ -23,6 +26,13 @@ jobs:
             - node_modules
           key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
 
+  buildStorybook:
+    docker:
+      - image: circleci/node:8.15-browsers
+
+    working_directory: ~/repo
+
+    steps:
       # build (clean, tokens, styles)
       - run:
           name: Build Storybook
@@ -34,17 +44,10 @@ jobs:
           paths:
             - ~/repo
 
-  screener:
-    docker:
-      - image: circleci/node:8.15-browsers
-
-    working_directory: ~/repo
-
-    steps:
-      - checkout
-
 workflows:
   version: 2
   vrt:
     jobs:
-      - build
+      - checkout
+      - npmInstall
+      - buildStorybook
