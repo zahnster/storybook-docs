@@ -1,0 +1,50 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.15-browsers
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
+
+      - run:
+          name: npm-install
+          command: 'npm install'
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
+
+      # build (clean, tokens, styles)
+      - run:
+          name: Build Storybook
+          command: 'npm run build-storybook'
+
+      # Cache the completed build for use in later jobs in this workflow
+      - save_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/repo
+
+  screener:
+    docker:
+      - image: circleci/node:8.15-browsers
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+workflows:
+  version: 2
+  vrt:
+    jobs:
+      - build
