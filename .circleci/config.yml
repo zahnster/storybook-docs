@@ -44,5 +44,7 @@ workflows:
   version: 2
   vrt:
     jobs:
-      - checkout
       - build
+        requires:
+          - checkout
+
