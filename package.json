@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -s node_modules/@salesforce-ux/design-system -p 6006",
     "build-storybook": "build-storybook"
   },
   "author": "SLDS Infrastructure",
