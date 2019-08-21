@@ -30,3 +30,5 @@ Since this project adheres to Storybook, file convention within each folder is i
 - `base.stories.js` - describes the base component story for the component variant
 - `examples.stories.js` - describes example stories for the component variant
 - `states.stories.js` - describes state stories for the component variant
+
+For the purposes of this spike, we are utilizing the `@salesforce-ux/design-system` npm repo for the SLDS Stylesheet and assets, and thus we are not hosting or compiling any SLDS source Sass within this project.
