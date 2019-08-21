@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "eyes-storybook": "eyes-storybook"
   },
   "author": "SLDS Infrastructure",
   "license": "ISC",
   "devDependencies": {
+    "@applitools/eyes-storybook": "^2.7.32",
     "@babel/core": "7.5.5",
     "@babel/runtime-corejs2": "7.5.5",
     "@salesforce-ux/design-system": "2.9.4",
