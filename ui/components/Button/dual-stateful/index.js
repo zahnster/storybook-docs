@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import Button from '../index';
+import Button from '../base';
 import SvgIcon from '../../../../shared/components/SvgIcon';
 
 const DualStatefulButton = props => {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button from '../';
+import Button from '../base';
 import SvgIcon from '../../../../shared/components/SvgIcon';
 import mdx from '../docs.stories.mdx';
 

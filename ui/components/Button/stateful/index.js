@@ -5,7 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import Button from '../';
+import Button from '../base';
 import SvgIcon from '../../../../shared/components/SvgIcon';
 
 const StatefulButton = props => {

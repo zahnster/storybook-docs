@@ -5,7 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import CannotBeSetWith from '../../../shared/helpers/cannot-be-set-with';
+import CannotBeSetWith from '../../../../shared/helpers/cannot-be-set-with';
 
 const Button = props => {
   const {
