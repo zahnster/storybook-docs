@@ -1,7 +1,7 @@
 version: 2.1
 
 executors:
-  nodelts:
+  node:
     docker:
       - image: circleci/node:current-browsers
 
@@ -9,7 +9,7 @@ executors:
 
 jobs:
   install:
-    executor: nodelts
+    executor: node
     working_directory: ~/repo
 
     steps:
@@ -35,8 +35,20 @@ jobs:
           paths:
             - ~/repo
 
+  build:
+    executor: node
+    working_directory: ~/repo
+
+    steps:
+      - restore_cache:
+          keys:
+            - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - run:
+          name: Storybook build
+          command: 'npm run build-storybook'
+
   vrt:
-    executor: nodelts
+    executor: node
     working_directory: ~/repo
 
     steps:
@@ -54,6 +66,9 @@ workflows:
   vrt:
     jobs:
       - install
+      - build:
+          requires:
+            - install
       - vrt:
           requires:
             - install
