@@ -5,10 +5,7 @@ executors:
     docker:
       - image: circleci/node:current-browsers
 
-    working_directory: ~/repo
-
-    environment:
-      NODE_ENV: development
+      working_directory: ~/repo
 
 jobs:
   install:
@@ -32,7 +29,7 @@ jobs:
             - node_modules
           key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
 
-          # Cache the completed build for use in later jobs in this workflow
+      # Cache the completed build for use in later jobs in this workflow
       - save_cache:
           key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
           paths:
