@@ -8,7 +8,7 @@ executors:
     working_directory: ~/repo
 
     environment:
-      - NODE_ENV: development
+      NODE_ENV: development
 
 jobs:
   install:
