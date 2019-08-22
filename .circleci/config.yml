@@ -1,15 +1,14 @@
 version: 2.1
 
 executors:
-  nodelts:
+  node:
     docker:
-      - image: circleci/node:lts
+      - image: circleci/node:current-browsers
     working_directory: ~/repo
 
 jobs:
-  build:
-    executor: nodelts
-
+  install:
+    executor: node
     steps:
       - checkout
 
@@ -26,9 +25,20 @@ jobs:
             - node_modules
           key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
 
-      # - run:
-      #     name: Build Storybook
-      #     command: 'npm run build-storybook'
+          # Cache the completed build for use in later jobs in this workflow
+      - save_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/repo
+
+  vrt:
+    executor: node
+    working_directory: ~/repo
+
+    steps:
+      - restore_cache:
+          keys:
+            - v1-repo{{ .Environment.CIRCLE_SHA1 }}
 
       - run:
           name: Screener VRT
@@ -39,4 +49,7 @@ workflows:
 
   vrt:
     jobs:
-      - build
+      - install
+      - vrt:
+          requires:
+            - install
