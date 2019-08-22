@@ -1,9 +1,12 @@
 version: 2.1
 
+orbs:
+  puppeteer: threetreeslight/puppeteer@0.1.2
+
 executors:
   nodelts:
     docker:
-      - image: circleci/node:lts
+      - image: circleci/node:current-browsers
 
     working_directory: ~/repo
 
