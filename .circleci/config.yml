@@ -1,13 +1,14 @@
 version: 2.1
 
-orbs:
-  puppeteer: threetreeslight/puppeteer@0.1.2
-
 executors:
   nodelts:
     docker:
       - image: circleci/node:lts
+
     working_directory: ~/repo
+
+    environment:
+      - NODE_ENV: development
 
 jobs:
   install:
@@ -55,7 +56,7 @@ jobs:
           command: 'npx eyes-storybook -s node_modules/@salesforce-ux/design-system'
 
 workflows:
-  version: 2.1
+  version: 2
 
   vrt:
     jobs:
