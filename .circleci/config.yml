@@ -33,7 +33,7 @@ jobs:
           key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
 
           # Cache the completed build for use in later jobs in this workflow
-        - save_cache:
+      - save_cache:
           key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
           paths:
             - ~/repo
