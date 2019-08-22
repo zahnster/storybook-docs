@@ -30,12 +30,12 @@ jobs:
   #         name: Build Storybook
   #         command: 'npm run build-storybook'
 
-  runVRT:
+  install:
     executor: nodelts
+    working_directory: ~/repo
 
     steps:
       - checkout
-
       - run: 'export APPLITOOLS_BATCH_ID=`echo $CIRCLE_SHA1`'
 
       # Download and cache dependencies
@@ -51,6 +51,21 @@ jobs:
             - node_modules
           key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
 
+          # Cache the completed build for use in later jobs in this workflow
+      - save_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/repo
+
+  vrt:
+    executor: nodelts
+    working_directory: ~/repo
+
+    steps:
+      - restore_cache:
+          keys:
+            - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+
       - run:
           name: Applitools VRT
           command: 'npx eyes-storybook -s node_modules/@salesforce-ux/design-system'
@@ -58,7 +73,9 @@ jobs:
 workflows:
   version: 2
 
-  vrt:
+  build-and-test:
     jobs:
-      # - build
-      - runVRT
+      - install
+      - vrt:
+          requires:
+            - install
