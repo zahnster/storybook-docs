@@ -43,6 +43,19 @@ jobs:
           name: Storybook build
           command: 'npm run build-storybook'
 
+  vrt:
+    executor: node
+    working_directory: ~/repo
+
+    steps:
+      - restore_cache:
+          keys:
+            - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+
+      - run:
+          name: Screener VRT
+          command: 'npm run test-storybook'
+
 workflows:
   version: 2
 
@@ -50,5 +63,8 @@ workflows:
     jobs:
       - install
       - build:
+          requires:
+            - install
+      - vrt:
           requires:
             - install
