@@ -14,7 +14,6 @@ jobs:
 
     steps:
       - checkout
-      - run: 'export APPLITOOLS_BATCH_ID=`echo $CIRCLE_SHA1`'
 
       # Download and cache dependencies
       - restore_cache:
@@ -55,6 +54,8 @@ jobs:
       - restore_cache:
           keys:
             - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+
+      - run: 'export APPLITOOLS_BATCH_ID=`echo $CIRCLE_SHA1`'
 
       - run:
           name: Applitools VRT
