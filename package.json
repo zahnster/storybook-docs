@@ -9,12 +9,13 @@
     "test-storybook-dev": "screener-storybook --conf screener.config.js",
     "test-storybook": "NODE_ENV=production screener-storybook --conf screener.config.js"
   },
-  "author": "Salesforce UX Team",
+  "author": "SLDS Infrastructure",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "7.5.5",
     "@babel/runtime-corejs2": "7.5.5",
     "@salesforce-ux/design-system": "2.9.4",
+    "@storybook/addon-a11y": "^5.2.0-beta.31",
     "@storybook/addon-docs": "^5.2.0-beta.31",
     "@storybook/addons": "^5.2.0-beta.31",
     "@storybook/react": "^5.2.0-beta.31",
