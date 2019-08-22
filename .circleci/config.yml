@@ -31,7 +31,7 @@ jobs:
           paths:
             - ~/repo
 
-  vrt:
+  build:
     executor: node
     working_directory: ~/repo
 
@@ -39,17 +39,16 @@ jobs:
       - restore_cache:
           keys:
             - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
-
       - run:
-          name: Screener VRT
-          command: 'npm run test-storybook'
+          name: Storybook build
+          command: 'npm run build-storybook'
 
 workflows:
   version: 2
 
-  vrt:
+  build:
     jobs:
       - install
-      - vrt:
+      - build:
           requires:
             - install

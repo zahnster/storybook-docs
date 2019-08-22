@@ -11,4 +11,13 @@ export default {
   }
 };
 
-export const Base = () => <Button isNeutral>Button Neutral</Button>;
+export const Base = () => (
+  <Button isNeutral>
+    <SvgIcon
+      className="slds-button__icon slds-button__icon_left"
+      sprite="utility"
+      symbol="download"
+    />
+    Button Neutral
+  </Button>
+);
