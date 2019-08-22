@@ -32,10 +32,14 @@ jobs:
           key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
 
           # Cache the completed build for use in later jobs in this workflow
-      - save_cache:
-          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
-          paths:
-            - ~/repo
+      - run:
+          name: Applitools VRT
+          command: 'npx eyes-storybook -s node_modules/@salesforce-ux/design-system'
+
+          # - save_cache:
+      #     key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+      #     paths:
+      #       - ~/repo
 
   vrt:
     executor: nodelts
@@ -56,6 +60,6 @@ workflows:
   vrt:
     jobs:
       - install
-      - vrt:
-          requires:
-            - install
+      # - vrt:
+      #     requires:
+      #       - install
