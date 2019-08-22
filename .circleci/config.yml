@@ -1,14 +1,16 @@
 version: 2.1
 
 executors:
-  nodelts:
+  node:
     docker:
-      - image: circleci/node:lts
+      - image: circleci/node:current-browsers
+
     working_directory: ~/repo
 
 jobs:
-  build:
-    executor: nodelts
+  install:
+    executor: node
+    working_directory: ~/repo
 
     steps:
       - checkout
@@ -18,7 +20,7 @@ jobs:
           key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
 
       - run:
-          name: npm install
+          name: NPM Install
           command: 'npm install'
 
       - save_cache:
@@ -26,13 +28,48 @@ jobs:
             - node_modules
           key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
 
+          # Cache the completed build for use in later jobs in this workflow
+      - save_cache:
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/repo
+
+  build:
+    executor: node
+    working_directory: ~/repo
+
+    steps:
+      - restore_cache:
+          keys:
+            - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
       - run:
-          name: Build Storybook
+          name: Storybook build
           command: 'npm run build-storybook'
+
+  vrt:
+    executor: node
+    working_directory: ~/repo
+
+    steps:
+      - restore_cache:
+          keys:
+            - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+
+      - run: 'export APPLITOOLS_BATCH_ID=`echo $CIRCLE_SHA1`'
+
+      - run:
+          name: Applitools VRT
+          command: 'npx eyes-storybook -s node_modules/@salesforce-ux/design-system'
 
 workflows:
   version: 2
 
   vrt:
     jobs:
-      - build
+      - install
+      - build:
+          requires:
+            - install
+      - vrt:
+          requires:
+            - install
