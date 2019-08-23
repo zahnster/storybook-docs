@@ -6,7 +6,7 @@
   "scripts": {
     "storybook": "start-storybook -s node_modules/@salesforce-ux/design-system -p 6006",
     "build-storybook": "build-storybook -o .storybook-static",
-    "test-storybook": "NODE_ENV=production screener-storybook --conf screener.config.js"
+    "test-storybook": "NODE_ENV=production screener-storybook --conf screener.config.js",
     "test-storybook-dev": "screener-storybook --conf screener.config.js",
     "eyes-storybook": "eyes-storybook"
   },
