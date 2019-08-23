@@ -34,7 +34,7 @@ jobs:
           paths:
             - ~/repo
 
-  build:
+  buildStorybook:
     executor: node
     working_directory: ~/repo
 
@@ -42,11 +42,12 @@ jobs:
       - restore_cache:
           keys:
             - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+
       - run:
           name: Storybook build
           command: 'npm run build-storybook'
 
-  vrt:
+  applitools:
     executor: node
     working_directory: ~/repo
 
@@ -61,15 +62,34 @@ jobs:
           name: Applitools VRT
           command: 'npx eyes-storybook -s node_modules/@salesforce-ux/design-system'
 
+  screener:
+    executor: node
+    working_directory: ~/repo
+
+    steps:
+      - restore_cache:
+          keys:
+            - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+
+      - run:
+          name: Screener VRT
+          command: 'npm run test-storybook'
+
 workflows:
   version: 2
 
-  vrt:
+  build:
     jobs:
       - install
-      - build:
+
+      - buildStorybook:
           requires:
             - install
-      - vrt:
+
+      - applitools:
+          requires:
+            - install
+
+      - screener:
           requires:
             - install
