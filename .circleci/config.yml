@@ -4,11 +4,14 @@ executors:
   node:
     docker:
       - image: circleci/node:current-browsers
+
     working_directory: ~/repo
 
 jobs:
   install:
     executor: node
+    working_directory: ~/repo
+
     steps:
       - checkout
 
@@ -17,7 +20,7 @@ jobs:
           key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
 
       - run:
-          name: npm install
+          name: NPM Install
           command: 'npm install'
 
       - save_cache:
@@ -31,7 +34,7 @@ jobs:
           paths:
             - ~/repo
 
-  build:
+  buildStorybook:
     executor: node
     working_directory: ~/repo
 
@@ -43,7 +46,18 @@ jobs:
           name: Storybook build
           command: 'npm run build-storybook'
 
-  vrt:
+  applitools:
+    executor: node
+    working_directory: ~/repo
+
+    steps:
+      - run: 'export APPLITOOLS_BATCH_ID=`echo $CIRCLE_SHA1`'
+
+      - run:
+          name: Applitools VRT
+          command: 'npx eyes-storybook -s node_modules/@salesforce-ux/design-system'
+
+  screener:
     executor: node
     working_directory: ~/repo
 
@@ -62,9 +76,15 @@ workflows:
   build:
     jobs:
       - install
-      - build:
+
+      - buildStorybook:
           requires:
             - install
-      - vrt:
+
+      - applitools:
+          requires:
+            - install
+
+      - screener:
           requires:
             - install
