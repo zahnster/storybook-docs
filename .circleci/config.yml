@@ -55,7 +55,7 @@ jobs:
 
       - run:
           name: Applitools VRT
-          command: 'npx eyes-storybook -s node_modules/@salesforce-ux/design-system'
+          command: 'npx @applitools/eyes-storybook -s node_modules/@salesforce-ux/design-system'
 
   screener:
     executor: node
