@@ -9,6 +9,15 @@ module.exports = {
   apiKey: process.env.SCREENER_KEY,
   resolution: '1024x768',
   baseBranch: 'master',
-  failureExitCode: 0
-  // storybookStaticBuildDir: '.storybook-static'
+  // storybookStaticBuildDir: '.storybook-static',
+  failureExitCode: 0,
+  browsers: [
+    {
+      browserName: 'chrome'
+    },
+    {
+      browserName: 'internet explorer',
+      version: '11'
+    }
+  ]
 };
