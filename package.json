@@ -5,11 +5,12 @@
   "main": ".dist/docs/main.js",
   "scripts": {
     "storybook": "start-storybook -s node_modules/@salesforce-ux/design-system -p 6006",
-    "build-storybook": "build-storybook",
-    "eyes-storybook": "eyes-storybook",
-    "build-docs": "node build/docs.js",
+    "build-storybook": "build-storybook -o .storybook-static",
     "pack": "webpack --mode production",
-    "pack-dev": "webpack --mode development"
+    "pack-dev": "webpack --mode development",
+    "test-storybook": "NODE_ENV=production screener-storybook --conf screener.config.js",
+    "test-storybook-dev": "screener-storybook --conf screener.config.js",
+    "eyes-storybook": "eyes-storybook"
   },
   "author": "SLDS Infrastructure",
   "license": "ISC",
@@ -29,11 +30,11 @@
     "@storybook/react": "^5.2.0-beta.39",
     "babel-loader": "8.0.6",
     "classnames": "2.2.6",
+    "dotenv": "8.1.0",
     "prop-types": "15.7.2",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "webpack": "4.39.2",
-    "webpack-cli": "3.3.6",
-    "webpack-node-externals": "^1.7.2"
+    "screener-storybook": "0.18.7"
   }
 }
