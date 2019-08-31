@@ -19,10 +19,6 @@ module.exports = {
     'prop-types': 'prop-types'
   },
 
-  optimization: {
-    minimize: false
-  },
-
   module: {
     rules: [
       {
