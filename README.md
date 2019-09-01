@@ -17,6 +17,10 @@ Kick things off by cloning the repo and running `npm install`
 
 Storybook can be started with `npm run storybook`
 
+### Building the Docs
+
+We utilize webpack to compile and compress the mdx files that comprise our docs. We pack this content for consumption by other projects. To run the build, run `npm run pack`. Files are built into `.dist`.
+
 ## General Notes
 
 ### File Structure and Organization
