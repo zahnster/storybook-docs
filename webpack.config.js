@@ -1,12 +1,8 @@
 const path = require('path');
-const glob = require('glob');
+const docs = require('./config/docs');
 
 module.exports = {
-  // entry: glob.sync('./ui/components/**/docs.stories.mdx'),
-  entry: {
-    avatar: './ui/components/Avatar/docs.stories.mdx',
-    button: './ui/components/Button/docs.stories.mdx'
-  },
+  entry: docs,
 
   output: {
     libraryTarget: 'commonjs2',
