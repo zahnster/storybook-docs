@@ -1,5 +1,7 @@
 # SLDS Storybook Docs
 
+[![CircleCI](https://circleci.com/gh/zahnster/storybook-docs.svg?style=svg)](https://circleci.com/gh/zahnster/storybook-docs)
+
 ## Overview
 
 This is a prototype project conceptualizing how Storybook could be integrated into the SLDS development workflow and how we can enhance our testing and CI with CircleCI and Screener.io.
