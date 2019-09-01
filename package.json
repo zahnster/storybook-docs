@@ -2,10 +2,12 @@
   "name": "storybook-docs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": ".dist/docs/main.js",
   "scripts": {
     "storybook": "start-storybook -s node_modules/@salesforce-ux/design-system -p 6006",
     "build-storybook": "build-storybook -o .storybook-static",
+    "pack": "webpack --mode production",
+    "pack-dev": "webpack --mode development",
     "test-storybook": "NODE_ENV=production screener-storybook --conf screener.config.js",
     "test-storybook-dev": "screener-storybook --conf screener.config.js",
     "eyes-storybook": "eyes-storybook"
@@ -15,7 +17,11 @@
   "devDependencies": {
     "@applitools/eyes-storybook": "^2.7.32",
     "@babel/core": "7.5.5",
+    "@babel/plugin-proposal-export-default-from": "7.5.2",
+    "@babel/preset-env": "7.5.5",
+    "@babel/preset-react": "7.0.0",
     "@babel/runtime-corejs2": "7.5.5",
+    "@mdx-js/loader": "1.3.0",
     "@salesforce-ux/design-system": "2.9.4",
     "@storybook/addon-a11y": "^5.2.0-beta.39",
     "@storybook/addon-docs": "^5.2.0-beta.39",
@@ -27,6 +33,8 @@
     "prop-types": "15.7.2",
     "react": "16.9.0",
     "react-dom": "16.9.0",
-    "screener-storybook": "0.18.7"
+    "screener-storybook": "0.18.7",
+    "webpack": "4.39.2",
+    "webpack-cli": "^3.3.7"
   }
 }
