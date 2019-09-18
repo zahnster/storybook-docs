@@ -1,13 +1,15 @@
 import React from 'react';
 
 import Button from './';
-import mdx from '../docs.stories.mdx';
+import mdx from '../docs.mdx';
 
 export default {
   title: 'Base Components/Button/Base/Examples',
   component: Button,
   parameters: {
-    docs: mdx.parameters.docs
+    docs: {
+      page: mdx
+    }
   }
 };
 

@@ -4,10 +4,16 @@
 import React from 'react';
 
 import CustomIcon from './';
+import mdx from '../docs.mdx';
 
 export default {
   title: 'Base Components/Icon/Custom',
-  component: CustomIcon
+  component: CustomIcon,
+  parameters: {
+    docs: {
+      page: mdx
+    }
+  }
 };
 
 export const Base = () => <CustomIcon />;
