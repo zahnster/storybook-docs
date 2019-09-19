@@ -47,33 +47,27 @@ jobs:
           name: Storybook build
           command: 'npm run build-storybook'
 
-  applitools:
-    executor: node
-    working_directory: ~/repo
-
-    steps:
-      - restore_cache:
-          keys:
-            - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
-
-      - run: 'export APPLITOOLS_BATCH_ID=`echo $CIRCLE_SHA1`'
-
-      - run:
-          name: Applitools VRT
-          command: 'npx eyes-storybook -s node_modules/@salesforce-ux/design-system'
-
-  screener:
-    executor: node
-    working_directory: ~/repo
-
-    steps:
-      - restore_cache:
-          keys:
-            - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
-
-      - run:
-          name: Screener VRT
-          command: 'npm run test-storybook'
+  # applitools:
+  #   executor: node
+  #   working_directory: ~/repo
+  #   steps:
+  #     - restore_cache:
+  #         keys:
+  #           - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+  #     - run: 'export APPLITOOLS_BATCH_ID=`echo $CIRCLE_SHA1`'
+  #     - run:
+  #         name: Applitools VRT
+  #         command: 'npx eyes-storybook -s node_modules/@salesforce-ux/design-system'
+  # screener:
+  #   executor: node
+  #   working_directory: ~/repo
+  #   steps:
+  #     - restore_cache:
+  #         keys:
+  #           - v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+  #     - run:
+  #         name: Screener VRT
+  #         command: 'npm run test-storybook'
 
 workflows:
   version: 2
