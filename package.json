@@ -8,14 +8,11 @@
     "build-storybook": "build-storybook -o .storybook-static",
     "pack": "webpack --mode production",
     "pack-dev": "webpack --mode development",
-    "test-storybook": "NODE_ENV=production screener-storybook --conf screener.config.js",
-    "test-storybook-dev": "screener-storybook --conf screener.config.js",
-    "eyes-storybook": "eyes-storybook"
+    "test-storybook": "NODE_ENV=production screener-storybook --conf screener.config.js"
   },
   "author": "SLDS Infrastructure",
   "license": "ISC",
   "devDependencies": {
-    "@applitools/eyes-storybook": "^2.7.32",
     "@babel/core": "7.5.5",
     "@babel/plugin-proposal-export-default-from": "7.5.2",
     "@babel/preset-env": "7.5.5",
@@ -23,18 +20,23 @@
     "@babel/runtime-corejs2": "7.5.5",
     "@mdx-js/loader": "1.3.0",
     "@salesforce-ux/design-system": "2.9.4",
-    "@storybook/addon-a11y": "^5.2.0-beta.39",
-    "@storybook/addon-docs": "^5.2.0-beta.39",
-    "@storybook/addons": "^5.2.0-beta.39",
-    "@storybook/react": "^5.2.0-beta.39",
+    "@storybook/addon-a11y": "5.2.1",
+    "@storybook/addon-docs": "5.2.1",
+    "@storybook/addons": "5.2.1",
+    "@storybook/react": "5.2.1",
     "babel-loader": "8.0.6",
     "classnames": "2.2.6",
+    "css-loader": "^3.2.0",
     "dotenv": "8.1.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
     "prop-types": "15.7.2",
     "react": "16.9.0",
     "react-dom": "16.9.0",
-    "screener-storybook": "0.18.7",
+    "rehype-add-classes": "1.0.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
     "webpack": "4.39.2",
-    "webpack-cli": "^3.3.7"
+    "webpack-cli": "3.3.7"
   }
 }

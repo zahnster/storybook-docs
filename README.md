@@ -4,9 +4,9 @@
 
 ## Overview
 
-This is a prototype project conceptualizing how Storybook could be integrated into the SLDS development workflow and how we can enhance our testing and CI with CircleCI and Screener.io.
+This is a prototype project conceptualizing how Storybook could be integrated into the SLDS development workflow and how we can enhance our testing and CI with CircleCI and a Storybook-based VRT solution.
 
-This project utilizes the latest Storybook 5.2 beta, so we can test out several new Storybook advancements:
+This project utilizes Storybook 5.2 in order to test out several new Storybook advancements:
 
 - [Component Story Format](https://medium.com/storybookjs/component-story-format-66f4c32366df)
 - [Storybook Docs](https://github.com/storybookjs/storybook/blob/next/addons/docs/README.md)

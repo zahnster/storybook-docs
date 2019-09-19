@@ -1,12 +1,14 @@
 import React from 'react';
 
 import StatefulButton from './';
-import mdx from '../docs.stories.mdx';
+import mdx from '../docs.mdx';
 
 export default {
   title: 'Base Components/Button/Stateful/States',
   parameters: {
-    docs: mdx.parameters.docs
+    docs: {
+      page: mdx
+    }
   }
 };
 

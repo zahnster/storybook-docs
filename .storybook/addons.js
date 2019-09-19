@@ -2,3 +2,4 @@
 // Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license
 
 import '@storybook/addon-a11y/register';
+import '@storybook/addon-docs/register';

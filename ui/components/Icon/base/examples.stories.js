@@ -1,10 +1,16 @@
 import React from 'react';
 
 import UtilityIcon from '../base';
+import mdx from '../docs.mdx';
 
 export default {
   title: 'Base Components/Icon/Base/Examples',
-  component: UtilityIcon
+  component: UtilityIcon,
+  parameters: {
+    docs: {
+      page: mdx
+    }
+  }
 };
 
 export const CurrentColor = () => (

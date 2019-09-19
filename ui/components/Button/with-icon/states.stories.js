@@ -2,12 +2,14 @@ import React from 'react';
 
 import Button from '../base';
 import SvgIcon from '../../../../shared/components/SvgIcon';
-import mdx from '../docs.stories.mdx';
+import mdx from '../docs.mdx';
 
 export default {
   title: 'Base Components/Button/With Icon/States',
   parameters: {
-    docs: mdx.parameters.docs
+    docs: {
+      page: mdx
+    }
   }
 };
 
