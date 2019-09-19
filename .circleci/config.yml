@@ -79,11 +79,9 @@ workflows:
       - buildStorybook:
           requires:
             - install
-
-      - applitools:
-          requires:
-            - install
-
-      - screener:
-          requires:
-            - install
+      # - applitools:
+      #     requires:
+      #       - install
+      # - screener:
+      #     requires:
+      #       - install
