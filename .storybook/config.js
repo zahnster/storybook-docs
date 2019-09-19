@@ -3,6 +3,7 @@
 
 import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css';
 import './styles.css';
+import './doc-styles.scss';
 
 import { configure, addDecorator } from '@storybook/react';
 import { withA11y } from '@storybook/addon-a11y';
